@@ -1,24 +1,34 @@
 intersection()
 {
-    $fn = 100;
+    $fn = 48;
 
     // Radius of nozzle tip where to hold
     r = 3.6 / 2;
-    or = 6.5 / 2;
-    tr = 13 / 2;
+    or = 6.6 / 2;
+    tr = 9.5 / 2;
     // Nozzle slot thickness
     s = 1;
+
+    // center point
+    q = 12;
 
     // Width of nozzle holder
     w = 20;
     // Border
-    b = 15;
+    b = 6;
     // Distance between nozzles
-    d = 15;
+    d = 12;
     h = 5;
 
+    // gripper grip distance
     o = 0.6;
-    nozzles = 6;
+    // slot width to accomodate gripper movement
+    m = o*2;
+    // gripper width
+    t = 1.2;
+    nozzles = 7;
+    // narrow opening slot
+    g = 0.5;
 
     difference()
     {
@@ -29,36 +39,61 @@ intersection()
         // Slot for nozzle slit
         for(i = [1:nozzles])
         {
-            translate([10, b + d/2 + (i - 1) * d, s]) cylinder(h + s + 2, or, or);
+            translate([q, b + d/2 + (i - 1) * d, s]) cylinder(h + s + 2, or, or);
+            translate([q+3.2+o*2, b + d/2 + (i - 1) * d, s]) cylinder(h + s + 2, or, or);
             hull()
             {
-                translate([10, b + d/2 + (i - 1) * d, s]) cylinder(h + s + 2, or - o, or - o);
-                translate([w + 10, b + d/2 + (i - 1) * d, s]) cylinder(h + s + 2, or - o, or - o);
+                translate([q, b + d/2 + (i - 1) * d, s]) cylinder(h + s + 2, or - o, or - o);
+                translate([w + q, b + d/2 + (i - 1) * d, s]) cylinder(h + s + 2, or - o, or - o);
             }
             hull()
             {
                 translate([w, b + d/2 + (i - 1) * d, s]) cylinder(h + s + 2, tr, tr);
-                translate([w + 10, b + d/2 + (i - 1) * d, s]) cylinder(h + s + 2, tr, tr);
+                translate([w + q, b + d/2 + (i - 1) * d, s]) cylinder(h + s + 2, tr, tr);
             }
             hull()
             {
                 translate([w - 3, b + d/2 + (i - 1) * d, -1]) cylinder(h + s + 2, or, or);
-                translate([w + 10, b + d/2 + (i - 1) * d, -1]) cylinder(h + s + 2, or, or);
+                translate([w + q, b + d/2 + (i - 1) * d, -1]) cylinder(h + s + 2, or, or);
             }
             // Cut out for spring
-            translate([15, b + d/2 + (i - 1) * d - 5, s]) cube([2, 10, 3], false);
-            translate([6, b + d/2 + (i - 1) * d - 6, s]) cube([12, 2, 3], false);
-            translate([6, b + d/2 + (i - 1) * d + 4, s]) cube([12, 2, 3], false);
-            translate([6, b + d/2 + (i - 1) * d - 5, s + 1.6]) cube([10, 10, 3], false);
+            translate([q+4, b + (i - 1) * d, s]) cube([20, d, 3], false);     // remove ends
+            translate([q-2, b + d/2 + (i - 1) * d - d/2, s + 1.6]) cube([10, d, 3], false); // overcut
+
+            translate([q-5, b + d/2 + (i - 1) * d - or , s]) cube([5, g, 3], false); // slot
+            translate([q-5, b + d/2 + (i - 1) * d + or - g , s]) cube([5, g, 3], false);           // slot
+            translate([q-5, b + (i - 1) * d  , s + 1.6]) cube([10, d/2-or, 3], false); // overcut on arm
+            translate([q-5, b + (i - 1) * d + d/2 + or , s + 1.6]) cube([10, d/2-or, 3], false); // overcut on arm
+
+        }
+        if(1)
+        {
+            // Slot for nozzle slit
+            for(i = [-1:nozzles])
+            {
+                hull()
+                {
+                    r = d/2-or-t;
+                    translate([q-5+r, b + (i - 1) * d , s]) cylinder(h+s+2, r,r, $fn=12);
+                    translate([q+3-r, b + (i - 1) * d , s]) cylinder(h+s+2, r,r, $fn=12);
+                }
+            }
+            for(i = [0:nozzles])
+            {
+                translate([q-4, b + i * d -m/2, s]) cube([20, m, 3], false);           // slot
+            }
         }
         // Screw holes for holding all layers together
-        for(i = [1:nozzles - 1])
+        for(i = [-1:nozzles + 1])
         {
-            translate([w - 17, b + d + (i - 1) * d, -1]) cylinder(h + s + 2, 1.6, 1.6);
+            translate([w - 16, b + d + (i - 1) * d, -1]) cylinder(h + s + 2, 1.6, 1.6);
         }
         // Holes for M4 mounting screws at both sides
-        translate([w / 2, b / 2, -1]) cylinder(h + s + 2, 2.2, 2.2);
-        translate([w / 2, nozzles * d + 2 * b - b / 2, -1]) cylinder(h + s + 2, 2.2, 2.2);
+        if(b>8)
+        {
+            translate([w / 2, b / 2, -1]) cylinder(h + s + 2, 2.2, 2.2);
+            translate([w / 2, nozzles * d + 2 * b - b / 2, -1]) cylinder(h + s + 2, 2.2, 2.2);
+        }
     }
     translate([0, 0, s]) cube([w, nozzles * d + 2 * b, h - 3], false);
 }
