@@ -4,7 +4,7 @@ intersection()
 
     // Radius of nozzle tip where to hold
     r = 3.5 / 2;
-    or = 6.6 / 2;
+    or = 6.3 / 2;
     tr = 9.5 / 2;
 
     // center point
@@ -26,7 +26,6 @@ intersection()
         {
             cube([w, nozzles * d + 2 * b, h], false);
         }
-        translate([q,0,h - 0.1]) cube([0.1, nozzles * d + 2 * b, 0.2], false);
         // Slot for nozzle slit
         for(i = [1:nozzles])
         {

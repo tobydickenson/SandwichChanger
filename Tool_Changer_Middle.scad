@@ -4,7 +4,7 @@ intersection()
 
     // Radius of nozzle tip where to hold
     r = 3.6 / 2;
-    or = 6.6 / 2;
+    or = 6.3 / 2;
     tr = 9.5 / 2;
 
     // center point

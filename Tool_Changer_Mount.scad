@@ -2,29 +2,31 @@ difference()
 {
     $fn = 48;
 
-    // Radius of nozzle tip where to hold
-    r = 9.5 / 2;
-
     // Width of nozzle holder
     w = 20;
     // Border
     b = 6;
     // Distance between nozzles
     d = 12;
-    h = 14;
+    h = 13;
 
     // center point
     q = 12;
 
-    // pit depth
-    p = 6;
+    // pit depth and radius
+    p0 = 2;
+    r0 = 6.8 / 2;
+    p1 = 3;
+    r1 = 9.5 / 2;
 
     nozzles = 7;
 
     // mounting slot
+    sw0 = 6.0;
+    sd0 = 2.0;
     sw1 = 3.0;
     sd1 = 2.5;
-    sw2 = 5.5;
+    sw2 = 7.0;
     sd2 = 2.4;
     // position of first slot
     j = 10;
@@ -38,16 +40,21 @@ difference()
     {
         hull()
         {
-            translate([q, b + d/2 + (i - 1) * d, h - p]) cylinder(h + 2, r, r);
-            translate([w + q, b + d/2 + (i - 1) * d, h - p]) cylinder(h + 2, r, r);
+            translate([q, b + d/2 + (i - 1) * d, h - p0]) cylinder(p0, r0, r0);
+            translate([w + q, b + d/2 + (i - 1) * d, h - p0]) cylinder(p0, r0, r0);
         }
-        translate([q-4/2, b + d/2 + (i - 1) * d - .2/2, h - p-.1]) cube([4, .2, 2]);
-        translate([q-.2/2, b + d/2 + (i - 1) * d - 4/2, h - p-.1]) cube([.2, 4, 2]);
+        hull()
+        {
+            translate([q, b + d/2 + (i - 1) * d, h - p0 - p1]) cylinder(p1, r1, r1);
+            translate([w + q, b + d/2 + (i - 1) * d, h - p0 - p1]) cylinder(p1, r1, r1);
+        }
+        translate([w, b + d/2 + (i - 1) * d, h - p0]) cylinder(p1, r1, r1);
+        
     }
     // Screw holes for holding all layers together
     for(i = [-1:nozzles + 1])
     {
-        translate([w - 16, b + d + (i - 1) * d, h-12]) cylinder(13, 1.6, 1.6);
+        translate([w - 16, b + d + (i - 1) * d, h-10]) cylinder(13, 1.6, 1.6);
         hull()
         {
             translate([w - 16, b + d + (i - 1) * d, h - 6]) cylinder(2.5, 3.3, 3.3, $fn = 6);
@@ -69,8 +76,14 @@ difference()
         }
         hull()
         {
-            translate([10, j+15*i,sd1]) cylinder(sd2, sw2/2, sw2/2, $fn = 6);
-            translate([40, j+15*i,sd1]) cylinder(sd2, sw2/2, sw2/2, $fn = 6);
+            translate([10, j+15*i,sd1]) cylinder(sd2, sw2/2, sw2/2, $fn=6);
+            translate([40, j+15*i,sd1]) cylinder(sd2, sw2/2, sw2/2, $fn=6);
+        }
+        hull()
+        {
+            translate([-10, j+15*i,0]) cylinder(sd0, sw0/2, sw0/2);
+            translate([2, j+15*i,0]) cylinder(sd0, sw0/2, sw0/2);
         }
     }
 }
+

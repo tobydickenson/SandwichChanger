@@ -3,11 +3,11 @@ intersection()
     $fn = 48;
 
     // Radius of nozzle tip where to hold
-    r = 3.6 / 2;
-    or = 6.6 / 2;
+    r = 3.4 / 2;
+    or = 6.3 / 2;
     tr = 9.5 / 2;
     // Nozzle slot thickness
-    s = 1;
+    s = 1.4;
 
     // center point
     q = 12;
@@ -36,12 +36,17 @@ intersection()
                 translate([q, b + d/2 + (i - 1) * d, -1]) cylinder(h + s + 2, r, r);
                 translate([w + q, b + d/2 + (i - 1) * d, -1]) cylinder(h + s + 2, r, r);
             }
-//            hull()
+            translate([w, b + d/2 + (i - 1) * d, -1]) cylinder(h + s + 2, tr, tr);
+            
+            // lead in
+            hull()
             {
-                translate([w, b + d/2 + (i - 1) * d, -1]) cylinder(h + s + 2, tr, tr);
-                translate([w + q, b + d/2 + (i - 1) * d, -1]) cylinder(h + s + 2, tr, tr);
+                translate([w-tr+r, b + d/2 + (i - 1) * d, -1]) cylinder(h + s + 2, r+0.5, r+0.5);
+                translate([q+r, b + d/2 + (i - 1) * d, -1]) cylinder(h + s + 2, r, r);
             }
-            translate([q-or-0.2, b + d/2 + (i - 1) * d - d/2, s]) cube([20, d, 0.2], false);
+            
+            // launch pad
+            translate([q-or-0.2, b + d/2 + (i - 1) * d - d/2, s]) cube([20, d, 10], false);
         }
         // Screw holes for holding all layers together
         for(i = [-1:nozzles + 1])
@@ -55,5 +60,5 @@ intersection()
             translate([w / 2, nozzles * d + 2 * b - b / 2, -1]) cylinder(h + s + 2, 2.2, 2.2);
         }
     }
-    translate([0, 0, 0]) cube([w, nozzles * d + 2 * b, s + 0.2], false);
+    translate([0, 0, 0]) cube([w, nozzles * d + 2 * b, s + 0.4], false);
 }
