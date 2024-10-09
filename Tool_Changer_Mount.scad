@@ -16,7 +16,7 @@ difference()
     // pit depth and radius
     p0 = 2;
     r0 = 6.3 / 2;
-    p1 = 7;
+    p1 = 3;
     r1 = 9.5 / 2;
 
     nozzles = 7;
