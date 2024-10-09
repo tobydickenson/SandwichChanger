@@ -8,15 +8,15 @@ difference()
     b = 6;
     // Distance between nozzles
     d = 12;
-    h = 13;
+    h = 17;
 
     // center point
     q = 12;
 
     // pit depth and radius
     p0 = 2;
-    r0 = 6.8 / 2;
-    p1 = 3;
+    r0 = 6.3 / 2;
+    p1 = 7;
     r1 = 9.5 / 2;
 
     nozzles = 7;
@@ -54,7 +54,7 @@ difference()
     // Screw holes for holding all layers together
     for(i = [-1:nozzles + 1])
     {
-        translate([w - 16, b + d + (i - 1) * d, h-10]) cylinder(13, 1.6, 1.6);
+        translate([w - 16, b + d + (i - 1) * d, h-10]) cylinder(h, 1.6, 1.6);
         hull()
         {
             translate([w - 16, b + d + (i - 1) * d, h - 6]) cylinder(2.5, 3.3, 3.3, $fn = 6);

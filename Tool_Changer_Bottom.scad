@@ -3,11 +3,11 @@ intersection()
     $fn = 48;
 
     // Radius of nozzle tip where to hold
-    r = 3.4 / 2;
+    r = 3.5 / 2;
     or = 6.3 / 2;
     tr = 9.5 / 2;
     // Nozzle slot thickness
-    s = 1.4;
+    s = 1.3;
 
     // center point
     q = 12;
