@@ -21,8 +21,12 @@ b = 6;
 // Distance between nozzles
 d = 12;
 
+// The gap between adjacent layers to allow for movement
+gap = 0.4;
+
 // Number of nozzles
 nozzles = 7;
 
 
 
+e = 0.001;

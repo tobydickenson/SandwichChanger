@@ -15,15 +15,17 @@ intersection()
         // Slot for nozzle slit
         for(i = [1:nozzles])
         {
+            // Cradle for the nozzle tip shank
             hull()
             {
-                translate([q, b + d/2 + (i - 1) * d, 0]) cylinder(h + 2, or, or);
-                translate([w + q, b + d/2 + (i - 1) * d, 0]) cylinder(h + 2, or, or);
+                translate([q, b + d/2 + (i - 1) * d, -e]) cylinder(h + 2 + 2*e, or, or);
+                translate([w + q, b + d/2 + (i - 1) * d, -e]) cylinder(h + 2 + 2*e, or, or);
             }
+            // The launch pad
             hull()
             {
-                translate([w, b + d/2 + (i - 1) * d, 0]) cylinder(h + 2, tr, tr);
-                translate([w + q, b + d/2 + (i - 1) * d, 0]) cylinder(h + 2, tr, tr);
+                translate([w, b + d/2 + (i - 1) * d, -e]) cylinder(h + 2 + 2*e, tr, tr);
+                translate([w + q, b + d/2 + (i - 1) * d, -e]) cylinder(h + 2 + 2*e, tr, tr);
             }
         }
         // Screw holes for holding all layers together
