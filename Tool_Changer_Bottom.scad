@@ -48,12 +48,14 @@ intersection()
             // launch pad
             translate([q-or-0.2, b + d/2 + (i - 1) * d - d/2, s]) cube([20, d, 10], false);
         }
+
         // Screw holes for holding all layers together
         for(i = [-1:nozzles + 1])
         {
             translate([w - 16, b + d + (i - 1) * d, -1]) cylinder(h + s + 2, 1.6, 1.6);
         }
 
+        // If we have wide border, then add a through hole. Default parameters above do not
         if(b>8)
         {
             translate([w / 2, b / 2, -1]) cylinder(h + s + 2, 2.2, 2.2);

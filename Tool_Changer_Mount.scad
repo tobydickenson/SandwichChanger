@@ -61,13 +61,16 @@ difference()
             translate([-5, b + d + (i - 1) * d, h - 6]) cylinder(2.5, 3.3, 3.3, $fn = 6);
         }
     }
+
+    // If we have wide border, then add a through hole. Default parameters above do not
     if(b>8)
     {
         translate([w / 2, b / 2, -1]) cylinder(h + 2, 2.2, 2.2);
         translate([w / 2, nozzles * d + 2 * b - b / 2, -1]) cylinder(h + 2, 2.2, 2.2);
     }
 
-    for(i = [0:10])
+    // An array of slots for mounting on the table. 15mm pitch
+    for(i = [0:round((b*2+d*nozzles-j*2)/15)])
     {
         hull()
         {

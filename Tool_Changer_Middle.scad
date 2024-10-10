@@ -86,7 +86,8 @@ intersection()
         {
             translate([w - 16, b + d + (i - 1) * d, -1]) cylinder(h + 2, 1.6, 1.6);
         }
-        // Holes for M4 mounting screws at both sides
+
+        // If we have wide border, then add a through hole. Default parameters above do not
         if(b>8)
         {
             translate([w / 2, b / 2, -1]) cylinder(h + 2, 2.2, 2.2);
