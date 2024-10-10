@@ -1,25 +1,16 @@
+include <Dimensions.scad>
+
 difference()
 {
     $fn = 48;
 
-    // Width of nozzle holder
-    w = 20;
-    // Border
-    b = 6;
-    // Distance between nozzles
-    d = 12;
     h = 17;
-
-    // center point
-    q = 12;
 
     // pit depth and radius
     p0 = 2;
     r0 = 6.3 / 2;
     p1 = 3;
     r1 = 9.5 / 2;
-
-    nozzles = 7;
 
     // mounting slot
     sw0 = 6.0;
@@ -28,6 +19,7 @@ difference()
     sd1 = 2.5;
     sw2 = 7.0;
     sd2 = 2.4;
+
     // position of first slot
     j = 10;
 

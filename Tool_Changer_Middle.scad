@@ -1,21 +1,9 @@
+include <Dimensions.scad>
+
 intersection()
 {
     $fn = 48;
 
-    // Radius of nozzle tip where to hold
-    r = 3.6 / 2;
-    or = 6.3 / 2;
-    tr = 9.5 / 2;
-
-    // center point
-    q = 12;
-
-    // Width of nozzle holder
-    w = 20;
-    // Border
-    b = 6;
-    // Distance between nozzles
-    d = 12;
     h = 2;
 
     // gripper grip distance
@@ -24,7 +12,6 @@ intersection()
     m = o*2;
     // gripper width
     t = 1.2;
-    nozzles = 7;
     // narrow opening slot
     g = 0.5;
 
