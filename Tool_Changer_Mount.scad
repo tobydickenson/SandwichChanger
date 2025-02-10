@@ -4,7 +4,7 @@ difference()
 {
     $fn = 48;
 
-    h = 17;
+    h = 11;
 
     // pit depth and radius
     p0 = 2;
@@ -16,7 +16,7 @@ difference()
     sw0 = 6.0;
     sd0 = 2.0;
     sw1 = 3.0;
-    sd1 = 2.5;
+    sd1 = 1.9;
     sw2 = 7.0;
     sd2 = 2.4;
 
@@ -25,7 +25,7 @@ difference()
 
     union()
     {
-        cube([w, nozzles * d + 2 * b, h], false);
+        linear_extrude(h) offset(1) offset(-1) square([w, nozzles * d + 2 * b]);
     }
     // Slot for nozzle slit
     for(i = [1:nozzles])
@@ -48,7 +48,7 @@ difference()
     // Screw holes for holding all layers together
     for(i = [-1:nozzles + 1])
     {
-        translate([w - 16, b + d + (i - 1) * d, h-10]) cylinder(h, 1.6, 1.6);
+        translate([w - 16, b + d + (i - 1) * d, h-7]) cylinder(h, 1.6, 1.6);
         hull()
         {
             translate([w - 16, b + d + (i - 1) * d, h - 6]) cylinder(2.5, 3.3, 3.3, $fn = 6);

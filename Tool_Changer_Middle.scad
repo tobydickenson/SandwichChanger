@@ -19,7 +19,7 @@ intersection()
     {
         union()
         {
-            cube([w, nozzles * d + 2 * b, h], false);
+            linear_extrude(h) offset(1) offset(-1) square([w, nozzles * d + 2 * b]);
         }
         // Slot for nozzle slit
         for(i = [1:nozzles])
