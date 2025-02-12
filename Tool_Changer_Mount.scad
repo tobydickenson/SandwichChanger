@@ -4,7 +4,7 @@ difference()
 {
     $fn = 48;
 
-    h = 11;
+    h = 14;
 
     // pit depth and radius
     p0 = 2;
