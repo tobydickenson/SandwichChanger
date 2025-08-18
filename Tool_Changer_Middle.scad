@@ -74,5 +74,10 @@ intersection()
             translate([w / 2, b / 2, -1]) cylinder(h + 2, 2.2, 2.2);
             translate([w / 2, nozzles * d + 2 * b - b / 2, -1]) cylinder(h + 2, 2.2, 2.2);
         }
+
+        if(cutaway_visualisation)
+        {
+            translate([0,0,-1]) linear_extrude(h+2) offset(e) square([w, 2*d + b]);
+        }
     }
 }

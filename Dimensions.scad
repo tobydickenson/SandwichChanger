@@ -28,5 +28,7 @@ gap = 0.4;
 nozzles = 7;
 
 
+// Optionally peel back some layers to show inner working
+cutaway_visualisation = 0;
 
 e = 0.01;
