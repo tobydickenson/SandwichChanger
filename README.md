@@ -20,6 +20,13 @@ The 4 parts are clamped together with 8x 16mm M3 bolts and nuts. It is best to i
 
 The top 3 parts are obviously printed flat. The mounting part is best printed on its back.
 
+## Recommended Automatic Tip Changer Motion Sequence
+
+1. Start above the changing station. It is important to capture the X/Y coordinate precisely to ensure that the nozzle will be aligned with the tip during the loading operation. I find the best way to capture the X/Y coordinate is using top vision, with a medium size tool in the changer. The tip internal hole will be out of focus, but sufficiently visible for alignment purposes.
+2. The second location is at the same X/Y coordinate as the first, but with the Z lowered so that the nozzle spring is fully compressed and the tip fully driven onto nozzle. NB all of the force of compressing the spring is carried by the large flange onto the top surface of the tool changer.
+3. The third location is at the same X/Y coordinate as the first, but with the nozzle spring having maybe 0.2mm compression so that the large flange is gently held against the top surface.
+4. The fourth location is a 10mm movement in X/Y and maybe 0.4mm above the third location in Z. The movement from 4 to 3 should be a gentle landing of the large flange onto the top surface.
+
 [![CP40 tool Changer Photo](photo.jpg)](https://www.youtube.com/watch?v=uOaBIDkO-QQ)
 
 ![CP40 tool Changer](Tool_Changer.png)
