@@ -33,3 +33,8 @@ The top 3 parts are obviously printed flat. The mounting part is best printed on
 
 ![CP40 tool Changer Exploded](Tool_Changer_Exploded.png)
 
+## Recommended Installation
+
+Put a pillar nearby to carry the vertical force when loading a nozzle tip, to avoid causing the build plate to bend.
+
+
