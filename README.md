@@ -33,8 +33,10 @@ The top 3 parts are obviously printed flat. The mounting part is best printed on
 
 ![CP40 tool Changer Exploded](Tool_Changer_Exploded.png)
 
-## Recommended Installation
+## Recommended Installation on lumpenpn
 
-Put a pillar nearby to carry the vertical force when loading a nozzle tip, to avoid causing the build plate to bend.
+On a lumenpnp I recommend using an extra "build plate foot". This is the pillar which supports the middle of a secondary build plate.
+Mount it directly underneath the tool changer to carry the vertical force when loading a nozzle tip.
+This prevents the build plate flexing. Note that this needs to be installed before the toolchanger.
 
 
