@@ -20,6 +20,8 @@ The 4 parts are clamped together with 8x 16mm M3 bolts and nuts. It is best to i
 
 The top 3 parts are obviously printed flat. The mounting part is best printed on its back.
 
+The photos show multiple colors, but of course the tool changer is fully functional printed all in the same material.
+
 ## Recommended Automatic Tip Changer Motion Sequence
 
 1. Start above the changing station. It is important to capture the X/Y coordinate precisely to ensure that the nozzle will be aligned with the tip during the loading operation. I find the best way to capture the X/Y coordinate is using top vision, with a medium size tool in the changer. The tip internal hole will be out of focus, but sufficiently visible for alignment purposes.
