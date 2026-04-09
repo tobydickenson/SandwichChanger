@@ -62,7 +62,8 @@ intersection()
                 translate([q-4, b + i * d -m/2, -e]) cube([20, m, h+2*e], false);
             }
         }
-        // Screw holes for holding all layers together
+
+        if(screw_holes_for_holding_all_layers_together)
         for(i = [-1:nozzles + 1])
         {
             translate([w - 16, b + d + (i - 1) * d, -e]) cylinder(h + 2*e, 1.6, 1.6);
@@ -79,5 +80,13 @@ intersection()
         {
             translate([0,0,-1]) linear_extrude(h+2) offset(e) square([w, 2*d + b]);
         }
+
+        // If we dont have the screw holes, then we can remove some material from the back
+        if(back_remove_thickness>0)
+        {
+            translate([-e,-e,-e])
+            linear_extrude(h+e+e) square([back_remove_thickness+e, nozzles * d + 2 * b + 2*e]);
+        }
+
     }
 }

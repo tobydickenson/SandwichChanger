@@ -45,7 +45,8 @@ difference()
         // Launch pad
         translate([w, b + d/2 + (i - 1) * d, h - p0]) cylinder(p1, r1, r1);
     }
-    // Screw holes for holding all layers together
+
+    if(screw_holes_for_holding_all_layers_together)
     for(i = [-1:nozzles + 1])
     {
         translate([w - 16, b + d + (i - 1) * d, h-7]) cylinder(h, 1.6, 1.6);
@@ -85,5 +86,12 @@ difference()
             translate([2, j+15*i,-e]) cylinder(sd0+e, sw0/2, sw0/2);
         }
     }
+
+        // If we dont have the screw holes, then we can remove some material from the back
+        if(back_remove_thickness>0)
+        {
+            translate([-e,-e,-e])
+            linear_extrude(h+e+e) square([back_remove_thickness+e, nozzles * d + 2 * b + 2*e]);
+        }
 }
 

@@ -27,6 +27,10 @@ gap = 0.4;
 // Number of nozzles
 nozzles = 7;
 
+screw_holes_for_holding_all_layers_together = true;
+
+back_remove_thickness = screw_holes_for_holding_all_layers_together ? 0.0 : 5.0;
+
 
 // Optionally peel back some layers to show inner working
 cutaway_visualisation = 0;
